@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cine TsaPulga · TsaPulga</title>
+    <meta name="description" content="Los streams pasados y los videos de TsaPulga, a demanda y con buscador.">
+    <meta name="theme-color" content="#0a090b">
+    <meta property="og:title" content="Cine TsaPulga">
+    <meta property="og:description" content="Los streams pasados y los videos de TsaPulga, a demanda y con buscador.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Silkscreen&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/data/config.js"></script>
+    <script src="js/data/redes.js"></script>
+    <script src="js/layout.js"></script>
+</head>
+<body>
+    <site-header current="cine"></site-header>
+
+    <main id="contenido">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Cine TsaPulga</span>
+                <h1>Streams y videos, <em>a demanda</em>.</h1>
+                <p>Reviví los streams pasados y mirá mis videos cuando quieras. Los streams arrancan directo en la parte buena, sin la espera del principio.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="toolbar">
+                    <label class="search">
+                        <span class="sr-only">Buscar en la cartelera</span>
+                        <i data-icon="search"></i>
+                        <input type="search" id="buscar" placeholder="Buscar por juego o título… (ej: Valorant)" autocomplete="off">
+                    </label>
+                    <div class="chips" role="group" aria-label="Filtrar por tipo" id="filtro-tipo"></div>
+                    <div class="chips" role="group" aria-label="Ordenar">
+                        <button class="chip" type="button" data-orden="nuevos" aria-pressed="true">Más nuevos</button>
+                        <button class="chip" type="button" data-orden="viejos" aria-pressed="false">Más viejos</button>
+                    </div>
+                </div>
+                <p class="result-count" id="contador" aria-live="polite" style="margin:-12px 0 20px"></p>
+                <div class="grid grid-3" id="cine-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <dialog class="video-dialog" id="video-dialog" aria-labelledby="video-titulo">
+        <div class="video-dialog-head">
+            <h2 id="video-titulo"></h2>
+            <div style="display:flex; gap:8px">
+                <a class="icon-btn" id="video-youtube" target="_blank" rel="noopener" aria-label="Abrir en YouTube" title="Abrir en YouTube"><i data-icon="external"></i></a>
+                <button class="icon-btn" type="button" id="video-cerrar" aria-label="Cerrar"><i data-icon="x"></i></button>
+            </div>
+        </div>
+        <div class="video-dialog-player" id="video-player"></div>
+    </dialog>
+
+    <site-footer></site-footer>
+
+    <script src="js/data/videos.js"></script>
+    <script src="js/componentes.js"></script>
+    <script src="js/pages/cine.js"></script>
+</body>
+</html>

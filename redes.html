@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redes · TsaPulga</title>
+    <meta name="description" content="Todas las redes de TsaPulga: Twitch, Kick, YouTube, TikTok, X, Instagram y Discord.">
+    <meta name="theme-color" content="#0a090b">
+    <meta property="og:title" content="Redes · TsaPulga">
+    <meta property="og:description" content="Todas las redes de TsaPulga en un solo lugar.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Silkscreen&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/data/config.js"></script>
+    <script src="js/data/redes.js"></script>
+    <script src="js/layout.js"></script>
+</head>
+<body>
+    <site-header current="redes"></site-header>
+
+    <main id="contenido">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Redes</span>
+                <h1>Seguime en <em>todos lados</em>.</h1>
+                <p>Donde transmito, donde subo los streams y donde se junta la comunidad.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="grid grid-3" id="redes"></div>
+            </div>
+        </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script>
+        document.getElementById("redes").innerHTML = TSA.redes.map(r => `
+            <a class="card card-hover social-card" href="${r.url}" target="_blank" rel="noopener">
+                <span class="social-logo" style="background:${r.bg}; color:${r.fg}">${TSA.iconoRed(r, 26)}</span>
+                <div style="min-width:0">
+                    <h3>${TSA.escapar(r.nombre)}</h3>
+                    <p>${TSA.escapar(r.usuario)}</p>
+                    <p style="color:var(--muted); margin-top:6px">${TSA.escapar(r.descripcion)}</p>
+                </div>
+                ${TSA.icono("arrowUpRight", "icon icon-arrow")}
+            </a>`).join("");
+    </script>
+</body>
+</html>

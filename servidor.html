@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Server de Minecraft KEO RPG · TsaPulga</title>
+    <meta name="description" content="KEO RPG, el server de Minecraft de la comunidad de TsaPulga: IP, cómo instalar el modpack, primeros pasos, mods y reglas.">
+    <meta name="theme-color" content="#0a090b">
+    <meta property="og:title" content="Server KEO RPG · TsaPulga">
+    <meta property="og:description" content="El server de Minecraft de la comunidad: clases, magia y progresión por jefes.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Silkscreen&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/data/config.js"></script>
+    <script src="js/data/redes.js"></script>
+    <script src="js/layout.js"></script>
+</head>
+<body>
+    <site-header current="servidor"></site-header>
+
+    <main id="contenido">
+        <section class="page-hero">
+            <div class="container server-hero">
+                <div>
+                    <span class="eyebrow">Server de la comunidad</span>
+                    <h1><span data-server="nombre"></span>: Minecraft con <em>clases, magia y jefes</em>.</h1>
+                    <p>
+                        Un modpack de rol con mazmorras y decenas de jefes. Acá nada se regala: el hierro,
+                        el diamante y los encantamientos se desbloquean derrotando jefes.
+                        Entran cuentas premium y no premium, sin whitelist.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary btn-lg" href="#conectarse"><i data-icon="zap"></i> Cómo conectarse</a>
+                        <a class="btn btn-secondary btn-lg" data-server-href="modpack" target="_blank" rel="noopener"><i data-icon="download"></i> Descargar modpack</a>
+                    </div>
+                </div>
+
+                <aside class="card server-panel" aria-label="Datos del server">
+                    <img class="server-logo" src="assets/keo-rpg.webp" alt="Logo del server Bautistas Hardcore, Minecraft RPG" width="324" height="324">
+                    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px">
+                        <strong style="font-family:var(--font-display); font-size:1.2rem" data-server="nombre"></strong>
+                        <span class="badge badge-green"><span class="dot dot-pulse"></span> Online</span>
+                    </div>
+                    <div class="ip-copy">
+                        <code data-server="ip"></code>
+                        <button class="btn btn-primary btn-sm" type="button" data-copiar-ip><i data-icon="copy"></i> Copiar</button>
+                    </div>
+                    <dl class="spec-list">
+                        <div><dt>Versión</dt><dd>Minecraft <span data-server="version"></span></dd></div>
+                        <div><dt>Modloader</dt><dd data-server="loader"></dd></div>
+                        <div><dt>Dificultad</dt><dd data-server="dificultad"></dd></div>
+                        <div><dt>Jugadores</dt><dd>Hasta <span data-server="jugadores"></span></dd></div>
+                        <div><dt>Whitelist</dt><dd>No, entrada libre</dd></div>
+                    </dl>
+                </aside>
+            </div>
+        </section>
+
+        <nav class="subnav" aria-label="Secciones de la página">
+            <div class="container">
+                <a href="#que-tiene">Qué tiene</a>
+                <a href="#conectarse">Cómo conectarse</a>
+                <a href="#primeros-pasos">Primeros pasos</a>
+                <a href="#mods">Mods</a>
+                <a href="#reglas">Reglas</a>
+            </div>
+        </nav>
+
+        <!-- Qué tiene -->
+        <section class="section" id="que-tiene">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Qué tiene</span>
+                        <h2 class="section-title">Olvidate de la progresión <em>normal</em></h2>
+                    </div>
+                </div>
+                <div class="grid grid-4 reveal">
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="sword"></i></span>
+                        <h3>Progresión por jefes</h3>
+                        <p>No podés usar hierro, oro, diamante ni encantamientos hasta derrotar al jefe que los desbloquea. Arrancás con cobre y vas subiendo; las misiones del pack te guían.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="sparkles"></i></span>
+                        <h3>Clases y magia</h3>
+                        <p>Mago, paladín, pícaro, arquero y más, con cientos de hechizos y un árbol de habilidades que mejorás al subir de nivel (<kbd>Ctrl</kbd> + <kbd>K</kbd>).</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="trending"></i></span>
+                        <h3>Dificultad que escala</h3>
+                        <p>Arranca en Normal, pasa a Experto cuando entrás al Nether y a Maestro cuando matás al Ender Dragon, con raids y más botín.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="mountain"></i></span>
+                        <h3>Un mundo para explorar</h3>
+                        <p>Dragones para domesticar, dimensiones nuevas como The Undergarden y Eternal Starlight, y un End totalmente renovado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cómo conectarse -->
+        <section class="section" id="conectarse">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Cómo conectarse</span>
+                        <h2 class="section-title">5 pasos y ya estás jugando</h2>
+                        <p class="section-lead">Ojo: el modpack del server anterior no sirve para este. Si ya jugabas, bajá el nuevo.</p>
+                    </div>
+                </div>
+                <ol class="steps reveal">
+                    <li class="card step">
+                        <div>
+                            <h3>Instalá un launcher</h3>
+                            <p>Elegí según el tipo de cuenta de Minecraft que tengas.</p>
+                            <div class="step-actions">
+                                <div class="step-option">
+                                    <span>Cuenta premium</span>
+                                    <a class="btn btn-secondary btn-sm" href="https://prismlauncher.org/download" target="_blank" rel="noopener">Prism Launcher <i data-icon="external"></i></a>
+                                </div>
+                                <div class="step-option">
+                                    <span>Cuenta no premium</span>
+                                    <a class="btn btn-secondary btn-sm" href="https://polymc.org/download/" target="_blank" rel="noopener">PolyMC <i data-icon="external"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="card step">
+                        <div>
+                            <h3>Descargá el modpack</h3>
+                            <p>Es el mismo archivo para los dos launchers, premium y no premium.</p>
+                            <div class="step-actions">
+                                <a class="btn btn-primary btn-sm" data-server-href="modpack" target="_blank" rel="noopener"><i data-icon="download"></i> Descargar modpack</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="card step">
+                        <div>
+                            <h3>Importá la instancia</h3>
+                            <p>Abrí tu launcher, andá a <strong>Agregar instancia → Importar desde .zip</strong> y elegí el modpack que descargaste.</p>
+                        </div>
+                    </li>
+                    <li class="card step">
+                        <div>
+                            <h3>Conectate</h3>
+                            <p>Abrí la instancia, andá a <strong>Multijugador → Agregar servidor</strong> y pegá la IP:</p>
+                            <div class="ip-copy" style="margin-top:14px">
+                                <code data-server="ip"></code>
+                                <button class="btn btn-primary btn-sm" type="button" data-copiar-ip><i data-icon="copy"></i> Copiar IP</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="card step">
+                        <div>
+                            <h3>Registrate</h3>
+                            <p>La primera vez escribí <span class="cmd">/register &lt;contraseña&gt; &lt;contraseña&gt;</span> y las siguientes <span class="cmd">/login &lt;contraseña&gt;</span>. Tenés 60 segundos o te saca del server. ¡Y a jugar!</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Primeros pasos -->
+        <section class="section" id="primeros-pasos">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Primeros pasos</span>
+                        <h2 class="section-title">Lo que conviene saber apenas entrás</h2>
+                    </div>
+                </div>
+                <div class="grid grid-3 reveal">
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="home"></i></span>
+                        <h3>Protegé tu base</h3>
+                        <p>Abrí el menú de terrenos con <kbd>'</kbd> (apóstrofo) o escribí <span class="cmd">/oclaims claim</span> parado en el chunk. Con <span class="cmd">/oparties</span> armás un grupo con tus amigos.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="compass"></i></span>
+                        <h3>Viajes rápidos</h3>
+                        <p><span class="cmd">/tpa &lt;jugador&gt;</span> para ir hacia alguien y <span class="cmd">/tpahere &lt;jugador&gt;</span> para traerlo. Se acepta con <span class="cmd">/tpaccept</span>. Para viajes largos, usá las Waystones.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="skull"></i></span>
+                        <h3>Si morís</h3>
+                        <p>Tus cosas quedan en tu cadáver: volvé a buscarlo. No se cae al vacío ni se quema en la lava, y con <kbd>U</kbd> ves dónde moriste.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="mic"></i></span>
+                        <h3>Chat de voz</h3>
+                        <p>Simple Voice Chat ya viene en el pack: se habla manteniendo <kbd>Bloq Mayús</kbd>. En Controles cambiá la tecla del menú (<kbd>V</kbd>), porque el pack también la usa para fijar enemigos.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="user"></i></span>
+                        <h3>Skin si no sos premium</h3>
+                        <p>Escribí <span class="cmd">/skin set mojang &lt;nombre&gt;</span> con el nombre de cualquier cuenta premium y te ponés su skin.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon"><i data-icon="database"></i></span>
+                        <h3>Copias de seguridad</h3>
+                        <p>El mundo se respalda solo cada 2 horas mientras hay gente jugando, así que si pasa algo grave se puede recuperar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mods -->
+        <section class="section" id="mods">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Mods destacados</span>
+                        <h2 class="section-title">Algunos de los que le dan sabor</h2>
+                    </div>
+                </div>
+                <div class="grid grid-4 reveal">
+                    <div class="card"><h3>Armageddon</h3><p>Los jefes que desbloquean cada material: del Iron Colossus para el hierro hasta Nyxaris, el jefe final.</p></div>
+                    <div class="card"><h3>Magia y clases</h3><p>Iron's Spells 'n Spellbooks y RPG Series: hechizos, invocaciones, runas y equipo para cada clase.</p></div>
+                    <div class="card"><h3>Más jefes</h3><p>L_Ender's Cataclysm, Mowzie's Mobs, Legendary Monsters y Bosses' Rise, con mazmorras y botín propio.</p></div>
+                    <div class="card"><h3>Create</h3><p>Máquinas, engranajes y granjas automáticas para cuando quieras industrializarte.</p></div>
+                    <div class="card"><h3>Mochilas y almacenamiento</h3><p>Sophisticated Backpacks y Storage: mochilas con mejoras (se abren con <kbd>B</kbd>) y cofres que se agrandan.</p></div>
+                    <div class="card"><h3>Waystones + Minimapa</h3><p>Waystones para viajar rápido entre bases y Xaero's Minimap/Worldmap para no perderte nunca.</p></div>
+                    <div class="card"><h3>Chat de voz</h3><p>Simple Voice Chat: chat de voz de proximidad, como estar todos en la misma sala.</p></div>
+                    <div class="card"><h3>Terrenos y tumbas</h3><p>Open Parties and Claims para proteger tu base y Corpse para no perder tus cosas al morir.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reglas -->
+        <section class="section" id="reglas">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Reglas</span>
+                        <h2 class="section-title">Pocas, pero cumplilas</h2>
+                    </div>
+                </div>
+                <ol class="rules reveal">
+                    <li class="rule"><span class="rule-n">01</span><div><h3>Respetá las bases ajenas</h3><p>Está prohibido romper, robar o griefear bases de otros jugadores, aunque no estén protegidas.</p></div></li>
+                    <li class="rule"><span class="rule-n">02</span><div><h3>PvP con cabeza</h3><p>Hay PvP habilitado, pero no lo abuses. Si un jugador no quiere pelear, respetalo y no lo molestes.</p></div></li>
+                    <li class="rule"><span class="rule-n">03</span><div><h3>Granjas moderadas</h3><p>Las granjas están permitidas, pero nada de granjas gigantes que generen demasiado lag.</p></div></li>
+                    <li class="rule"><span class="rule-n">04</span><div><h3>Nada de trampas</h3><p>Prohibido usar clientes con hacks, x-ray o cualquier cosa que dé ventaja injusta.</p></div></li>
+                    <li class="rule"><span class="rule-n">05</span><div><h3>Reportá los bugs</h3><p>Si encontrás un bug o exploit, avisá en el Discord en vez de aprovecharlo.</p></div></li>
+                    <li class="rule"><span class="rule-n">06</span><div><h3>Buena onda en el chat</h3><p>Nada de insultos, discriminación ni spam. Tratá a los demás como te gustaría que te traten.</p></div></li>
+                    <li class="rule"><span class="rule-n">07</span><div><h3>Espacio para todos</h3><p>Antes de construir muy pegado a la base de otro jugador, pedile permiso.</p></div></li>
+                    <li class="rule"><span class="rule-n">08</span><div><h3>Los admins deciden</h3><p>Ante cualquier conflicto o duda, la palabra final la tienen los admins del server.</p></div></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="cta reveal">
+                    <div>
+                        <h2>¿Dudas para instalar o conectarte?</h2>
+                        <p>Pedí una mano en el Discord de la comunidad. Ahí también se avisa de mantenimientos y mods nuevos.</p>
+                    </div>
+                    <a class="btn btn-primary btn-lg" id="cta-discord" target="_blank" rel="noopener"><i data-icon="message"></i> Unirme al Discord</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="js/pages/servidor.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TsaPulga · Streams, cine y comunidad</title>
+    <meta name="description" content="Sitio oficial de TsaPulga: streams en vivo, el Cine TsaPulga con los streams pasados y los videos, el server de Minecraft de la comunidad y todas las redes.">
+    <meta name="theme-color" content="#0a090b">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TsaPulga · Streams, cine y comunidad">
+    <meta property="og:description" content="Streams en vivo, el Cine TsaPulga y el server de Minecraft de la comunidad.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Silkscreen&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/data/config.js"></script>
+    <script src="js/data/redes.js"></script>
+    <script src="js/layout.js"></script>
+</head>
+<body>
+    <site-header current="inicio"></site-header>
+
+    <main id="contenido">
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <span class="eyebrow">Streamer · Gamer · Comunidad</span>
+                    <h1>Streams, cine y <em>comunidad</em> en un solo lugar.</h1>
+                    <p class="hero-lead">
+                        Bienvenido a mi base de operaciones. Mirá el stream en vivo,
+                        reviví los streams pasados en el Cine TsaPulga y sumate al server de
+                        Minecraft de la comunidad.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary btn-lg" href="#en-vivo"><i data-icon="radio"></i> Ver en vivo</a>
+                        <a class="btn btn-secondary btn-lg" href="cine.html"><i data-icon="film"></i> Entrar al cine</a>
+                    </div>
+                    <div class="stats">
+                        <div><div class="stat-value" data-stat="streams">—</div><div class="stat-label">streams y videos en el cine</div></div>
+                        <div><div class="stat-value" data-stat="horas">—</div><div class="stat-label">horas para mirar</div></div>
+                        <div><div class="stat-value" data-stat="redes">—</div><div class="stat-label">redes para seguirme</div></div>
+                    </div>
+                </div>
+
+                <div class="hero-art" aria-hidden="true">
+                    <div class="hero-art-panel"></div>
+                    <img src="assets/mascota-sola.png" alt="" width="245" height="330">
+                    <div class="hero-tag hero-tag-1">
+                        <span class="tag-icon"><i data-icon="server"></i></span>
+                        <span><span data-server="nombre"></span><small>Server online</small></span>
+                    </div>
+                    <div class="hero-tag hero-tag-2" id="hero-estado">
+                        <span class="tag-icon"><i data-icon="radio"></i></span>
+                        <span>Twitch y Kick<small>Seguime para enterarte</small></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- En vivo -->
+        <section class="section-tight" id="en-vivo">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">En vivo</span>
+                        <h2 class="section-title">Si estoy transmitiendo, <em>lo ves acá</em></h2>
+                    </div>
+                </div>
+                <div class="live-frame reveal">
+                    <div id="twitch-embed"></div>
+                    <div class="live-bar">
+                        <div class="live-bar-info">
+                            <span class="badge" id="live-badge"><span class="dot"></span> Comprobando…</span>
+                            <span>twitch.tv/<span id="twitch-canal"></span></span>
+                        </div>
+                        <div class="live-bar-actions">
+                            <a class="btn btn-secondary btn-sm" id="link-twitch" target="_blank" rel="noopener">Abrir en Twitch <i data-icon="external"></i></a>
+                            <a class="btn btn-secondary btn-sm" id="link-kick" target="_blank" rel="noopener">Kick <i data-icon="external"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accesos -->
+        <section class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Explorá</span>
+                        <h2 class="section-title">Todo lo de TsaPulga</h2>
+                    </div>
+                </div>
+                <div class="grid grid-4 reveal">
+                    <a class="card card-hover feature-card" href="cine.html">
+                        <span class="card-icon"><i data-icon="film"></i></span>
+                        <h3>Cine TsaPulga</h3>
+                        <p>Mis streams pasados y mis videos, a demanda y con buscador. Se va completando a medida que subo más.</p>
+                        <span class="link-arrow">Entrar al cine <i data-icon="arrowRight"></i></span>
+                    </a>
+                    <a class="card card-hover feature-card" href="servidor.html">
+                        <span class="card-icon"><i data-icon="server"></i></span>
+                        <h3>Server de Minecraft</h3>
+                        <p>KEO RPG: clases, magia y progresión por jefes. Premium y no premium, sin whitelist.</p>
+                        <span class="link-arrow">Cómo conectarte <i data-icon="arrowRight"></i></span>
+                    </a>
+                    <a class="card card-hover feature-card" href="comandos.html">
+                        <span class="card-icon"><i data-icon="terminal"></i></span>
+                        <h3>Comandos del chat</h3>
+                        <p>Pedí canciones, sacá clips y más. Todos los comandos de Twitch y Kick, con buscador.</p>
+                        <span class="link-arrow">Ver comandos <i data-icon="arrowRight"></i></span>
+                    </a>
+                    <a class="card card-hover feature-card" href="novedades.html">
+                        <span class="card-icon"><i data-icon="bell"></i></span>
+                        <h3>Novedades</h3>
+                        <p>Anuncios, videos nuevos y cambios en el server. También llegan al Discord.</p>
+                        <span class="link-arrow">Ver novedades <i data-icon="arrowRight"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Server -->
+        <section class="section">
+            <div class="container">
+                <div class="card server-card reveal">
+                    <img class="server-logo" src="assets/keo-rpg.webp" alt="Logo del server Bautistas Hardcore, Minecraft RPG" width="148" height="148" loading="lazy">
+                    <div>
+                        <span class="badge badge-green"><span class="dot dot-pulse"></span> Online</span>
+                        <h3 style="margin-top:12px">Server <span data-server="nombre"></span></h3>
+                        <div class="server-meta">
+                            <span class="badge"><span data-server="juego"></span><span data-server="version"></span></span>
+                            <span class="badge" data-server="loader"></span>
+                            <span class="badge">Premium y no premium</span>
+                        </div>
+                        <div class="ip-copy">
+                            <code data-server="ip"></code>
+                            <button class="btn btn-primary btn-sm" type="button" data-copiar-ip><i data-icon="copy"></i> Copiar IP</button>
+                        </div>
+                        <a class="link-arrow" href="servidor.html" style="margin-top:18px">Guía para instalar el modpack y conectarte <i data-icon="arrowRight"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Últimos del cine -->
+        <section class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Cine TsaPulga</span>
+                        <h2 class="section-title">Lo último en cartelera</h2>
+                    </div>
+                    <a class="link-arrow" href="cine.html">Ver todos <i data-icon="arrowRight"></i></a>
+                </div>
+                <div class="grid grid-4" id="ultimos-videos"></div>
+            </div>
+        </section>
+
+        <!-- Novedades -->
+        <section class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Novedades</span>
+                        <h2 class="section-title">Lo último</h2>
+                    </div>
+                    <a class="link-arrow" href="novedades.html">Ver todas <i data-icon="arrowRight"></i></a>
+                </div>
+                <div class="grid grid-3" id="ultimas-novedades"></div>
+            </div>
+        </section>
+
+        <!-- Sobre mí -->
+        <section class="section">
+            <div class="container about">
+                <div class="about-img reveal">
+                    <img src="assets/sobre-mi.jpg" alt="Ilustración de TsaPulga en la cancha de River Plate" width="720" height="1080" loading="lazy">
+                </div>
+                <div class="about-text reveal">
+                    <span class="eyebrow">Sobre mí</span>
+                    <h2 class="section-title" style="margin-top:14px">Hola, soy <em>Pulga</em>.</h2>
+                    <p>Soy TsaPulga: streamer, gamer e hincha de River Plate. Empecé a prender streams para que mis partidas queden guardadas, y de a poco el canal se fue armando en lo que es ahora: desde streams de puro Minecraft técnico hasta las juntadas con el chat que terminamos votando qué vemos en el Cine TsaPulga.</p>
+                    <p>Este sitio es la base de todo eso: streams pasados, lo que voy subiendo a mis redes y los servidores de juegos para jugar todos juntos.</p>
+                    <div class="about-tags">
+                        <span class="badge">Minecraft</span>
+                        <span class="badge">Valorant</span>
+                        <span class="badge">Variedad</span>
+                        <span class="badge badge-red">River Plate</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Discord -->
+        <section class="section">
+            <div class="container">
+                <div class="cta reveal">
+                    <div>
+                        <h2>Sumate a la comunidad en Discord</h2>
+                        <p>Ahí aviso cuándo prendo, se arma para jugar en el server y llegan todas las novedades antes que a ningún lado.</p>
+                    </div>
+                    <a class="btn btn-primary btn-lg" id="cta-discord" target="_blank" rel="noopener"><i data-icon="message"></i> Unirme al Discord</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="js/data/videos.js"></script>
+    <script src="js/data/novedades.js"></script>
+    <script src="js/componentes.js"></script>
+    <script src="js/pages/inicio.js"></script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script src="js/pages/inicio-twitch.js"></script>
+</body>
+</html>

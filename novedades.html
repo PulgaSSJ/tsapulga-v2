@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Novedades · TsaPulga</title>
+    <meta name="description" content="Anuncios, videos nuevos y cambios en el server de TsaPulga.">
+    <meta name="theme-color" content="#0a090b">
+    <meta property="og:title" content="Novedades · TsaPulga">
+    <meta property="og:description" content="Anuncios, videos nuevos y cambios en el server de TsaPulga.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Silkscreen&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/data/config.js"></script>
+    <script src="js/data/redes.js"></script>
+    <script src="js/layout.js"></script>
+</head>
+<body>
+    <site-header current="novedades"></site-header>
+
+    <main id="contenido">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Novedades</span>
+                <h1>Lo último de <em>TsaPulga</em>.</h1>
+                <p>Anuncios, videos nuevos y cambios en el server. Todo lo que se publica acá también llega al Discord.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="toolbar">
+                    <div class="chips" role="group" aria-label="Filtrar por tipo" id="filtros"></div>
+                </div>
+                <div class="news-list" id="novedades"></div>
+            </div>
+        </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="js/data/novedades.js"></script>
+    <script src="js/componentes.js"></script>
+    <script src="js/pages/novedades.js"></script>
+</body>
+</html>

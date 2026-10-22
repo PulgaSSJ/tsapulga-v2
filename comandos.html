@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Comandos del chat · TsaPulga</title>
+    <meta name="description" content="Todos los comandos que podés usar en el chat de Twitch y Kick de TsaPulga: generales, música y moderación.">
+    <meta name="theme-color" content="#0a090b">
+    <meta property="og:title" content="Comandos del chat · TsaPulga">
+    <meta property="og:description" content="Todos los comandos del chat de Twitch y Kick de TsaPulga.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Silkscreen&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/data/config.js"></script>
+    <script src="js/data/redes.js"></script>
+    <script src="js/layout.js"></script>
+</head>
+<body>
+    <site-header current="comandos"></site-header>
+
+    <main id="contenido">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Comandos del chat</span>
+                <h1>Todo lo que podés usar en el <em>chat</em>.</h1>
+                <p>Funcionan en Twitch y en Kick. Tocá un comando para copiarlo y pegalo directo en el chat.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="toolbar">
+                    <label class="search">
+                        <span class="sr-only">Buscar un comando</span>
+                        <i data-icon="search"></i>
+                        <input type="search" id="buscar" placeholder="Buscar comando o qué hace… (ej: canción)" autocomplete="off">
+                    </label>
+                    <div class="chips" role="group" aria-label="Filtrar por grupo" id="filtros"></div>
+                </div>
+                <div id="comandos"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="cta reveal">
+                    <div>
+                        <h2>¿Falta algún comando o uno no anda?</h2>
+                        <p>Avisá en el Discord de la comunidad y lo revisamos.</p>
+                    </div>
+                    <a class="btn btn-primary btn-lg" id="cta-discord" target="_blank" rel="noopener"><i data-icon="message"></i> Unirme al Discord</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="js/data/comandos.js"></script>
+    <script src="js/pages/comandos.js"></script>
+</body>
+</html>
