@@ -50,7 +50,7 @@ jobs:
             echo "::warning::Falta el secret DISCORD_WEBHOOK_URL en el repo; no se envió el aviso."
             exit 0
           fi
-          MENSAJE="📰 **¡Hay novedades nuevas en TsaPulga!**"
+          MENSAJE="@everyone 📰 **¡Hay novedades nuevas en TsaPulga!**"
           while IFS= read -r linea; do
             if [ -n "$linea" ]; then
               MENSAJE="${MENSAJE}"$'\n'"• ${linea}"
@@ -58,5 +58,6 @@ jobs:
           done <<< "$TITULOS"
           MENSAJE="${MENSAJE}"$'\n\n'"👉 https://tsapulga.com/novedades.html"
 
-          PAYLOAD=$(MENSAJE="$MENSAJE" python3 -c 'import json, os; print(json.dumps({"content": os.environ["MENSAJE"]}))')
+          # allowed_mentions habilita explícitamente que @everyone notifique a todos
+          PAYLOAD=$(MENSAJE="$MENSAJE" python3 -c 'import json, os; print(json.dumps({"content": os.environ["MENSAJE"], "allowed_mentions": {"parse": ["everyone"]}}))')
           curl -sf -H "Content-Type: application/json" -d "$PAYLOAD" "$WEBHOOK_URL"
