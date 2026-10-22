@@ -1,0 +1,62 @@
+name: Avisar novedades en Discord
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'js/data/novedades.js'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detectar novedades nuevas
+        id: novedades
+        env:
+          ANTES: ${{ github.event.before }}
+        run: |
+          # Compara contra el estado anterior al push (cubre pushes con varios commits).
+          # Si no hay "antes" válido (primer push de la rama), usa el commit anterior.
+          if git cat-file -e "${ANTES}^{commit}" 2>/dev/null; then
+            DESDE="$ANTES"
+          else
+            DESDE="HEAD^"
+          fi
+          NUEVAS=$(git diff "$DESDE" HEAD -- js/data/novedades.js | grep '^+' | grep -oP '(?<=titulo: ")[^"]+' || true)
+          if [ -z "$NUEVAS" ]; then
+            echo "hay_novedades=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "hay_novedades=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "titulos<<TITULOS_EOF"
+              echo "$NUEVAS"
+              echo "TITULOS_EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Enviar a Discord
+        if: steps.novedades.outputs.hay_novedades == 'true'
+        env:
+          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TITULOS: ${{ steps.novedades.outputs.titulos }}
+        run: |
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "::warning::Falta el secret DISCORD_WEBHOOK_URL en el repo; no se envió el aviso."
+            exit 0
+          fi
+          MENSAJE="📰 **¡Hay novedades nuevas en TsaPulga!**"
+          while IFS= read -r linea; do
+            if [ -n "$linea" ]; then
+              MENSAJE="${MENSAJE}"$'\n'"• ${linea}"
+            fi
+          done <<< "$TITULOS"
+          MENSAJE="${MENSAJE}"$'\n\n'"👉 https://tsapulga.com/novedades.html"
+
+          PAYLOAD=$(MENSAJE="$MENSAJE" python3 -c 'import json, os; print(json.dumps({"content": os.environ["MENSAJE"]}))')
+          curl -sf -H "Content-Type: application/json" -d "$PAYLOAD" "$WEBHOOK_URL"

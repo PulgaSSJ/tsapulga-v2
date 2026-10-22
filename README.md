@@ -35,6 +35,7 @@ assets/                imágenes (ya optimizadas)
 - **Player de Twitch:** se embebe con el dominio en el que esté publicado el sitio, así que anda igual en el dominio final, en Netlify y en local. Muestra "En vivo ahora" u "Offline" según el estado del canal.
 - **Links directos al cine:** `cine.html#ID_DE_YOUTUBE` abre ese stream directamente (lo usan las tarjetas del inicio).
 - **404:** Netlify muestra `404.html` automáticamente en cualquier URL que no exista.
+- **Aviso a Discord:** al subir a `main` una novedad nueva en `js/data/novedades.js`, el workflow `.github/workflows/discord-notify.yml` publica su título en Discord. Necesita el secret `DISCORD_WEBHOOK_URL` en el repo de GitHub.
 
 ## Verlo en local
 
