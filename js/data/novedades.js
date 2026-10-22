@@ -6,6 +6,14 @@
 TSA.novedades = [
     {
         tipo: "anuncio",
+        titulo: "¡Nueva web de TsaPulga!",
+        fecha: "2026-10-22",
+        descripcion: "La página se renovó por completo: diseño nuevo, el Cine TsaPulga ahora con streams y videos (con buscador y filtros), una guía más clara para entrar al server KEO RPG y los comandos del chat con buscador y copia rápida. Todo sigue en tsapulga.com.",
+        link: "cine.html",
+        textoLink: "Entrar al cine"
+    },
+    {
+        tipo: "anuncio",
         titulo: "Server nuevo: KEO RPG reemplaza al Hardcore Semivanilla",
         fecha: "2026-10-20",
         descripcion: "El server de Minecraft de la comunidad ahora es KEO RPG (NeoForge 1.21.1): clases, magia y progresión por jefes, para cuentas premium y no premium. La IP es la misma, pero el modpack es nuevo: en la sección de Servidor tenés cómo instalarlo y registrarte.",
