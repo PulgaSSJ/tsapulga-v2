@@ -50,7 +50,7 @@
                     <img src="assets/mascota-sola.png" alt="" width="245" height="330">
                     <div class="hero-tag hero-tag-1">
                         <span class="tag-icon"><i data-icon="server"></i></span>
-                        <span><span data-server="nombre"></span><small>Server online</small></span>
+                        <span><span data-server="nombre"></span><small data-server-resumen>Server de Minecraft</small></span>
                     </div>
                     <div class="hero-tag hero-tag-2" id="hero-estado">
                         <span class="tag-icon"><i data-icon="radio"></i></span>
@@ -129,7 +129,7 @@
                 <div class="card server-card reveal">
                     <img class="server-logo" src="assets/keo-rpg.webp" alt="Logo del server Bautistas Hardcore, Minecraft RPG" width="148" height="148" loading="lazy">
                     <div>
-                        <span class="badge badge-green"><span class="dot dot-pulse"></span> Online</span>
+                        <span class="badge" data-server-estado><span class="dot"></span> Comprobando…</span>
                         <h3 style="margin-top:12px">Server <span data-server="nombre"></span></h3>
                         <div class="server-meta">
                             <span class="badge"><span data-server="juego"></span><span data-server="version"></span></span>
@@ -140,6 +140,7 @@
                             <code data-server="ip"></code>
                             <button class="btn btn-primary btn-sm" type="button" data-copiar-ip><i data-icon="copy"></i> Copiar IP</button>
                         </div>
+                        <div class="server-live" data-server-jugadores hidden></div>
                         <a class="link-arrow" href="servidor.html" style="margin-top:18px">Guía para instalar el modpack y conectarte <i data-icon="arrowRight"></i></a>
                     </div>
                 </div>

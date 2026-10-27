@@ -41,7 +41,7 @@
                     <img class="server-logo" src="assets/keo-rpg.webp" alt="Logo del server Bautistas Hardcore, Minecraft RPG" width="324" height="324">
                     <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px">
                         <strong style="font-family:var(--font-display); font-size:1.2rem" data-server="nombre"></strong>
-                        <span class="badge badge-green"><span class="dot dot-pulse"></span> Online</span>
+                        <span class="badge" data-server-estado><span class="dot"></span> Comprobando…</span>
                     </div>
                     <div class="ip-copy">
                         <code data-server="ip"></code>
@@ -54,6 +54,7 @@
                         <div><dt>Jugadores</dt><dd>Hasta <span data-server="jugadores"></span></dd></div>
                         <div><dt>Whitelist</dt><dd>No, entrada libre</dd></div>
                     </dl>
+                    <div class="server-live" data-server-jugadores hidden></div>
                 </aside>
             </div>
         </section>

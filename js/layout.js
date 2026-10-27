@@ -232,6 +232,12 @@
             btn.addEventListener("click", () => copiar(TSA.config.server.ip, "IP copiada"));
         });
 
+        // Estado del server en vivo: <span data-server-estado>, <div data-server-jugadores>, <small data-server-resumen>
+        if (document.querySelector("[data-server-estado], [data-server-jugadores], [data-server-resumen]")) {
+            consultarServer();
+            setInterval(() => { if (!document.hidden) consultarServer(); }, 60000);
+        }
+
         // Animación de entrada al hacer scroll
         const reveals = document.querySelectorAll(".reveal");
         if ("IntersectionObserver" in window) {
@@ -248,6 +254,53 @@
             reveals.forEach(el => el.classList.add("visible"));
         }
     });
+
+    // ---------- Estado del server de Minecraft (api.mcstatus.io, se actualiza cada minuto) ----------
+    // (mcsrvstat.us no sirve: no logra leer la respuesta del server con tantos mods)
+    async function consultarServer() {
+        let datos = null;
+        try {
+            const r = await fetch(`https://api.mcstatus.io/v2/status/java/${encodeURIComponent(TSA.config.server.ip)}`);
+            if (r.ok) datos = await r.json();
+        } catch { /* sin conexión o API caída: se deja como está */ }
+        if (datos) mostrarServer(datos);
+    }
+
+    function mostrarServer(d) {
+        const on = d.online ? (d.players?.online ?? 0) : 0;
+        const max = d.players?.max ?? TSA.config.server.jugadores;
+        // los que ocultan su nombre en las listas de servers vienen con uuid en ceros: se cuentan en "+N más"
+        const nombres = d.online ? (d.players?.list || [])
+            .filter(p => p.uuid !== "00000000-0000-0000-0000-000000000000")
+            .map(p => p.name_clean).filter(Boolean) : [];
+
+        document.querySelectorAll("[data-server-estado]").forEach(el => {
+            el.className = d.online ? "badge badge-green" : "badge badge-red";
+            el.innerHTML = d.online
+                ? `<span class="dot dot-pulse"></span> Online · ${on}/${max}`
+                : `<span class="dot"></span> Offline`;
+        });
+
+        document.querySelectorAll("[data-server-resumen]").forEach(el => {
+            el.textContent = !d.online ? "Apagado en este momento"
+                : on === 0 ? "Online · nadie jugando"
+                : `Online · ${on} jugando ahora`;
+        });
+
+        document.querySelectorAll("[data-server-jugadores]").forEach(el => {
+            let cuerpo;
+            if (!d.online) cuerpo = `<p class="jugadores-vacio">El server está apagado en este momento.</p>`;
+            else if (on === 0) cuerpo = `<p class="jugadores-vacio">No hay nadie conectado ahora. ¡Entrá vos!</p>`;
+            else {
+                const resto = on - nombres.length;
+                cuerpo = `<div class="jugadores">${nombres.map(n =>
+                    `<span class="jugador"><span class="jugador-inicial">${escapar(n.charAt(0).toUpperCase())}</span>${escapar(n)}</span>`).join("")}${
+                    resto > 0 ? `<span class="jugador jugador-mas">+${resto} más</span>` : ""}</div>`;
+            }
+            el.innerHTML = `<div class="server-live-titulo">Conectados ahora</div>${cuerpo}`;
+            el.hidden = false;
+        });
+    }
 
     // API pública para los scripts de cada página
     Object.assign(TSA, { icono, iconoRed, partesFecha, formatearFecha, escapar, atributosLink, copiar, toast });
