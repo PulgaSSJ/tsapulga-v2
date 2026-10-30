@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cartelera del cine · TsaPulga</title>
+    <meta name="description" content="Todos los streams del Cine TsaPulga con su número: pedí el que quieras en el chat de Twitch o Kick con !pedir y el número.">
+    <meta name="theme-color" content="#0a090b">
+    <meta property="og:title" content="Cartelera del Cine TsaPulga">
+    <meta property="og:description" content="Los streams del Cine TsaPulga con su número para pedirlos en el chat con !pedir.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Silkscreen&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/data/config.js"></script>
+    <script src="js/data/redes.js"></script>
+    <script src="js/layout.js"></script>
+</head>
+<body>
+    <site-header current="cartelera"></site-header>
+
+    <main id="contenido">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Cartelera del cine</span>
+                <h1>Pedí tu stream <em>por número</em>.</h1>
+                <p>Cuando el Cine TsaPulga está en vivo, cualquiera de estos streams se pide escribiendo <span class="cmd">!pedir</span> y el número en el chat de Twitch o Kick. Tocá el comando para copiarlo.</p>
+            </div>
+        </section>
+
+        <section class="cine-como" aria-labelledby="como-titulo">
+            <div class="container">
+                <h2 id="como-titulo">Cómo se elige qué ver</h2>
+                <ol class="cine-pasos">
+                    <li class="card cine-paso">
+                        <span class="cine-paso-n" aria-hidden="true">01</span>
+                        <div>
+                            <h3>Votá en el chat</h3>
+                            <p>En la votación escribí <span class="cmd">1</span> para que salga uno al azar o <span class="cmd">2</span> para abrir la cartelera. Si gana el 2, escribí el número del stream que querés. Un voto por persona.</p>
+                        </div>
+                    </li>
+                    <li class="card cine-paso">
+                        <span class="cine-paso-n" aria-hidden="true">02</span>
+                        <div>
+                            <h3>Pedilo con !pedir</h3>
+                            <p>Con <span class="cmd">!pedir 14</span> el stream entra a la cola y pasa cuando le toca (los canjes van primero). Uno por persona cada 10 minutos.</p>
+                        </div>
+                    </li>
+                    <li class="card cine-paso">
+                        <span class="cine-paso-n" aria-hidden="true">03</span>
+                        <div>
+                            <h3>Fijate la cola</h3>
+                            <p><span class="cmd">!cola</span> te dice qué viene y en qué lugar está tu pedido. Si te arrepentiste, <span class="cmd">!cancelar</span> saca el tuyo.</p>
+                        </div>
+                    </li>
+                    <li class="card cine-paso">
+                        <span class="cine-paso-n" aria-hidden="true">04</span>
+                        <div>
+                            <h3>Canjeá tus puntos</h3>
+                            <p>En Twitch canjeá <strong>VIDEO DE FONDO</strong> con los puntos del canal y después escribí el número en el chat: pasa primero en la cola.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section aria-labelledby="lista-titulo">
+            <div class="container">
+                <h2 class="sr-only" id="lista-titulo">Streams de la cartelera</h2>
+                <div class="toolbar">
+                    <label class="search">
+                        <span class="sr-only">Buscar en la cartelera</span>
+                        <i data-icon="search"></i>
+                        <input type="search" id="buscar" placeholder="Buscar por título, número o año…" autocomplete="off">
+                    </label>
+                    <div class="chips" role="group" aria-label="Ordenar" id="orden">
+                        <button class="chip" type="button" data-orden="numero" aria-pressed="true">Número</button>
+                        <button class="chip" type="button" data-orden="nuevos" aria-pressed="false">Más nuevos</button>
+                        <button class="chip" type="button" data-orden="largos" aria-pressed="false">Más largos</button>
+                    </div>
+                </div>
+                <div class="cartelera-estado">
+                    <p class="cartelera-contador" id="contador" aria-live="polite"></p>
+                    <p class="cartelera-actualizada" id="actualizada"></p>
+                </div>
+                <div id="cartelera"></div>
+            </div>
+        </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="js/data/videos.js"></script>
+    <script src="js/data/cartelera.js"></script>
+    <script src="js/componentes.js"></script>
+    <script src="js/pages/cartelera.js"></script>
+</body>
+</html>

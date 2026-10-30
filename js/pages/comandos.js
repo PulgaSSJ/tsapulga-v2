@@ -12,6 +12,15 @@
         .map(g => `<button class="chip" type="button" data-grupo="${g.id}" aria-pressed="${g.id === grupoActivo}">${escapar(g.nombre)} <span class="chip-count">${g.lista.length}</span></button>`)
         .join("");
 
+    // Descripción del grupo; si tiene "link", esa palabra se vuelve un link (o va al final si no está)
+    function descripcion(g) {
+        const texto = escapar(g.descripcion);
+        if (!g.link) return texto;
+        const palabra = escapar(g.link.texto);
+        const a = `<a href="${escapar(g.link.href)}">${palabra}</a>`;
+        return texto.includes(palabra) ? texto.replace(palabra, a) : `${texto} ${a}`;
+    }
+
     function render() {
         const q = normalizar(buscador.value.trim());
         const grupos = TSA.comandos
@@ -31,7 +40,7 @@
             <section class="cmd-group" aria-labelledby="g-${g.id}">
                 <div class="cmd-group-head">
                     <h2 id="g-${g.id}">${escapar(g.nombre)}</h2>
-                    <p>${escapar(g.descripcion)}</p>
+                    <p>${descripcion(g)}</p>
                 </div>
                 <div class="cmd-list">
                     ${g.lista.map(c => `

@@ -1,5 +1,6 @@
 // ===== Comandos del chat (Twitch y Kick) =====
 // Cada grupo tiene su lista. En "cmds" van el comando y sus alias (el primero es el principal).
+// "link" (opcional) convierte esa palabra de la descripción del grupo en un link.
 
 TSA.comandos = [
     {
@@ -36,6 +37,21 @@ TSA.comandos = [
         ]
     },
     {
+        id: "cine",
+        nombre: "Cine TsaPulga",
+        descripcion: "Cuando el stream es del cine: elegí qué se ve. La lista con los números está en la Cartelera.",
+        link: { texto: "Cartelera", href: "cartelera.html" },
+        lista: [
+            { cmds: ["1", "2"], desc: "En la votación: 1 para que salga uno al azar, 2 para abrir la cartelera y elegir." },
+            { cmds: ["!pedir 14"], desc: "Pedí un stream (con su número de la Cartelera) para que pase después: entra a la cola. Uno por persona cada 10 minutos." },
+            { cmds: ["!cola"], desc: "Te dice qué viene en la cola del cine y en qué lugar está tu pedido." },
+            { cmds: ["!cancelar"], desc: "Saca tu pedido de la cola (un canje de puntos lo saca un mod)." },
+            { cmds: ["!skip", "!saltar"], desc: "Vota para saltar el video del cine que se está viendo." },
+            { cmds: ["!cine"], desc: "Te dice qué stream se está viendo en el cine." },
+            { cmds: ["!lista"], desc: "Te pasa el link a la Cartelera con todos los streams numerados." }
+        ]
+    },
+    {
         id: "mods",
         nombre: "Solo moderadores",
         descripcion: "Control del canal y de la música, exclusivo para el equipo de mods",
@@ -57,7 +73,11 @@ TSA.comandos = [
             { cmds: ["!getPlaylists"], desc: "Lista las playlists disponibles." },
             { cmds: ["!addSong", "!add"], desc: "Agrega la canción actual a una playlist." },
             { cmds: ["!addSongToPlaylistFromInput"], desc: "Agrega una canción específica a una playlist." },
-            { cmds: ["!addToLikedSongs", "!addLike"], desc: "Agrega la canción actual a los favoritos de Spotify del canal." }
+            { cmds: ["!addToLikedSongs", "!addLike"], desc: "Agrega la canción actual a los favoritos de Spotify del canal." },
+            { cmds: ["!cine saltar", "!cine pausa", "!cine seguir"], desc: "Cine: salta, pausa o sigue el video que se está viendo." },
+            { cmds: ["!cine votar", "!cine cartelera", "!cine terminar"], desc: "Cine: arranca la votación ya, abre directo la cartelera o la cierra con los votos que hay." },
+            { cmds: ["!cine poner 14", "!cine cola 14", "!cine quitar 14"], desc: "Cine: pasa un stream ya, lo pone primero en la cola (detrás de los canjes) o lo saca de la cola." },
+            { cmds: ["!cine vuelvo 10", "!cine volví"], desc: "Cine: pone o saca el cartel de «Vuelvo en 10 min»." }
         ]
     }
 ];

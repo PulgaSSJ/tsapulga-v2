@@ -120,6 +120,7 @@
     const PAGINAS = [
         { id: "inicio", texto: "Inicio", href: "index.html" },
         { id: "cine", texto: "Cine", href: "cine.html" },
+        { id: "cartelera", texto: "Cartelera", href: "cartelera.html" },
         { id: "servidor", texto: "Servidor", href: "servidor.html" },
         { id: "comandos", texto: "Comandos", href: "comandos.html" },
         { id: "novedades", texto: "Novedades", href: "novedades.html" },

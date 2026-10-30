@@ -11,7 +11,8 @@ Todo el contenido que cambia seguido está en `js/data/`. No hace falta tocar el
 | Archivo | Para qué |
 | --- | --- |
 | `js/data/config.js` | Canal de Twitch, links de Kick/YouTube/Discord y datos del server (IP, versión, link del modpack, si está online) |
-| `js/data/videos.js` | Cartelera del Cine (streams y videos). Van en orden cronológico; los videos llevan `tipo: "video"` |
+| `js/data/videos.js` | Streams y videos del Cine (`cine.html`, los que están en YouTube). Van en orden cronológico; los videos llevan `tipo: "video"` |
+| `js/data/cartelera.js` | Cartelera del cine en vivo (`cartelera.html`): los streams con el número que se pide en el chat con `!pedir`. **No se edita a mano:** la genera el panel de la app del cine (Ajustes → Cartelera de la web → Exportar cartelera) y la próxima exportación la pisa. Después se sube con git como el resto |
 | `js/data/novedades.js` | Novedades. Se ordenan solas por fecha |
 | `js/data/comandos.js` | Comandos del chat, por grupo |
 | `js/data/redes.js` | Redes sociales (footer, página de Redes y estadísticas del inicio) |
@@ -21,7 +22,7 @@ El menú y el footer están en un solo lugar: `js/layout.js`. Si agregás una p�
 ## Estructura
 
 ```
-index.html, cine.html, servidor.html, comandos.html, novedades.html, redes.html, 404.html
+index.html, cine.html, cartelera.html, servidor.html, comandos.html, novedades.html, redes.html, 404.html
 css/styles.css         estilos y sistema de diseño (colores y tipografías en :root)
 js/layout.js           header, footer, íconos y utilidades compartidas
 js/componentes.js      tarjetas de video y de novedades reutilizables
@@ -33,7 +34,7 @@ assets/                imágenes (ya optimizadas)
 ## Detalles
 
 - **Player de Twitch:** se embebe con el dominio en el que esté publicado el sitio, así que anda igual en el dominio final, en Netlify y en local. Muestra "En vivo ahora" u "Offline" según el estado del canal.
-- **Links directos al cine:** `cine.html#ID_DE_YOUTUBE` abre ese stream directamente (lo usan las tarjetas del inicio).
+- **Links directos al cine:** `cine.html#ID_DE_YOUTUBE` abre ese stream directamente (lo usan las tarjetas del inicio y los botones «Mirarlo» de la Cartelera).
 - **404:** Netlify muestra `404.html` automáticamente en cualquier URL que no exista.
 - **Aviso a Discord:** al subir a `main` una novedad nueva en `js/data/novedades.js`, el workflow `.github/workflows/discord-notify.yml` publica su título en Discord, siempre con mención a `@everyone`. Necesita el secret `DISCORD_WEBHOOK_URL` en el repo de GitHub.
 

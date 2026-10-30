@@ -159,6 +159,13 @@ code, kbd { font-family: var(--font-mono); }
     .nav .btn { margin-top: 16px; }
 }
 @media (min-width: 901px) { .nav .nav-mobile-only { display: none; } }
+/* Pantallas medianas: el menú se ajusta un poco para que entren todas las páginas */
+@media (min-width: 901px) and (max-width: 1080px) {
+    .site-header .container { gap: 16px; }
+    .nav a { padding: 8px 7px; font-size: 0.88rem; }
+    .nav a[aria-current="page"]::after { left: 7px; right: 7px; }
+    .header-cta { margin-left: 0; }
+}
 
 /* =========================================================
    Botones, chips, badges
@@ -631,7 +638,7 @@ kbd, .cmd {
    ========================================================= */
 .toast {
     position: fixed; left: 50%; bottom: 24px; z-index: 400; transform: translate(-50%, 20px);
-    display: inline-flex; align-items: center; gap: 10px;
+    display: inline-flex; align-items: center; gap: 10px; width: max-content; max-width: calc(100vw - 32px);
     padding: 12px 18px; border-radius: 12px; background: var(--text); color: var(--bg);
     font-weight: 600; font-size: 0.92rem; box-shadow: 0 20px 50px -10px rgba(0,0,0,0.8);
     opacity: 0; pointer-events: none; transition: opacity .25s var(--ease), transform .25s var(--ease);
@@ -656,3 +663,67 @@ kbd, .cmd {
 .not-found img { width: 120px; margin: 0 auto 28px; image-rendering: pixelated; }
 .not-found h1 { font-size: clamp(3rem, 10vw, 6rem); }
 .not-found p { color: var(--muted); margin: 12px auto 28px; max-width: 420px; }
+
+/* =========================================================
+   Cartelera del cine en vivo (cartelera.html)
+   ========================================================= */
+/* Cómo se elige qué ver */
+.cine-como { margin-bottom: clamp(40px, 6vw, 56px); }
+.cine-como h2 { font-size: 1.4rem; margin-bottom: 16px; }
+.cine-pasos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.cine-paso { display: flex; flex-direction: column; gap: 14px; padding: 20px; }
+.cine-paso-n { font-family: var(--font-pixel); font-size: 0.85rem; line-height: 1; color: var(--red-ink); }
+.cine-paso h3 { font-size: 1.02rem; }
+.cine-paso p { font-size: 0.92rem; margin-top: 6px; }
+.cine-paso strong { color: var(--text); font-weight: 600; }
+@media (max-width: 980px) { .cine-pasos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+    .cine-pasos { grid-template-columns: 1fr; gap: 10px; }
+    .cine-paso { flex-direction: row; gap: 14px; padding: 16px 18px; }
+    .cine-paso-n { padding-top: 4px; }
+}
+
+/* Contador y fecha de actualización */
+.cartelera-estado {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px;
+    margin: -12px 0 20px; color: var(--muted); font-size: 0.9rem;
+}
+.cartelera-actualizada { font-size: 0.82rem; }
+@media (max-width: 560px) { .cartelera-estado { flex-direction: column; } }
+
+/* Lista de streams */
+.cartelera-lista { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+.cartelera-item {
+    display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 10px 20px; align-items: center;
+    padding: 14px 20px; border-top: 1px solid var(--border);
+}
+.cartelera-item:first-child { border-top: 0; }
+.cartelera-item:hover { background: rgba(255,255,255,0.02); }
+.cartelera-n {
+    font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600; line-height: 1;
+    color: var(--red-ink); font-variant-numeric: tabular-nums; letter-spacing: -0.03em;
+}
+.cartelera-n [aria-hidden] { color: var(--red); opacity: 0.6; margin-right: 1px; }
+.cartelera-info h3 { font-size: 1.02rem; line-height: 1.3; letter-spacing: -0.005em; overflow-wrap: anywhere; }
+.cartelera-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 14px; margin-top: 4px; color: var(--muted); font-size: 0.86rem; }
+.cartelera-dur { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 0.82rem; }
+.cartelera-dur .icon { width: 13px; height: 13px; opacity: 0.7; }
+.cartelera-acciones { display: grid; grid-template-columns: 128px 104px; gap: 8px; align-items: center; }
+.cartelera-copiar { height: 36px; justify-content: center; background: var(--red-soft); border-color: var(--red-line); }
+.cartelera-copiar .icon { opacity: 0.6; }
+.cartelera-copiar:hover { background: rgba(227, 25, 58, 0.24); }
+.cartelera-ver { justify-content: flex-start; }
+.cartelera-ver .icon { width: 13px; height: 13px; color: var(--red-ink); }
+@media (max-width: 640px) {
+    .cartelera-item { grid-template-columns: 44px minmax(0, 1fr); gap: 12px 12px; align-items: start; padding: 16px; }
+    .cartelera-n { font-size: 1.2rem; padding-top: 2px; }
+    .cartelera-acciones { grid-column: 2; display: flex; flex-wrap: wrap; gap: 8px; }
+    .cartelera-copiar { padding: 0 12px; }
+}
+
+/* Links a la cartelera desde otras páginas */
+.page-hero .hero-link { margin-top: 14px; font-size: 0.95rem; }
+.hero-link .link-arrow { color: var(--red-ink); }
+.hero-link .link-arrow:hover { color: #fff; }
+.cmd-group-head p a { color: var(--red-ink); text-decoration: underline; text-decoration-color: var(--red-line); text-underline-offset: 3px; }
+.cmd-group-head p a:hover { color: #fff; }
